@@ -6,10 +6,10 @@
 ### Necessário ter Ionic instalado na máquina
 ### - Baixe o projeto
 ### - Crie um projeto Ionic
-### -**ionic start BM_Flow blank**
-### Escolha **Angular* como framework a ser usado
+### - Utilize o comando "ionic start BM_Flow blank"
+### Escolha **Angular** como framework a ser usado
 ### Quando o projeto estiver pronto, copie os arquivos baixados para a pasta do projeto
 # WEB
-### No terminal use o comando ** ionic serve ** para rodar a aplicação no seu browser
+### No terminal use o comando **ionic serve** para rodar a aplicação no seu browser
 # Mobile
 ### no terminal use o comando ** ionic cordova build android** ou **ios --debug** e instale no seu celular
