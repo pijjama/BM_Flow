@@ -1,3 +1,4 @@
+import { BancoService } from './banco.service';
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -22,6 +23,6 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-    });
+    });  
   }
 }

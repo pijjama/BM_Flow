@@ -1,5 +1,7 @@
 {
   "name": "flowinter_chat",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
