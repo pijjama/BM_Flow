@@ -7,83 +7,81 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item-divider>
+    Campos com * são obrigatórios
+  </ion-item-divider>
   <div >
+    <ion-title >
+      Dados Pessoais
+    </ion-title>
     <!--o cadastro de nome é separado em duas partes-->
     <ion-item>
       <ion-input type="text" [(ngModel)]="nome" placeholder="Digite seu nome">
-        <ion-label>Nome :</ion-label>
+        <ion-label>*Nome :</ion-label>
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-input type="text" [(ngModel)]="sobrenome" placeholder="Digite seu sobrenome completo" >
-        <ion-label>Sobrenome :</ion-label>
+        <ion-label>*Sobrenome :</ion-label>
       </ion-input>
     </ion-item>
 
-    <ion-list>
-      <ion-radio-group value="" [(ngModel)]="sexo">
-
-        <ion-item>
-          <ion-label>Você se identifica como:</ion-label>
-        </ion-item>
-        
-        <ion-item>
-          <ion-label>Homem</ion-label>
-          <ion-radio slot="start" value="m"></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Mulher</ion-label>
-          <ion-radio slot="start" value="f"></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Outros</ion-label>
-          <ion-radio slot="start" value="o"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-list>
-
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="fone" placeholder="Digite seu número de telefone ou celular">
-        <ion-label>Contato :</ion-label>
-      </ion-input>
+    <ion-item >
+      <ion-label>*Data nascimento :</ion-label>
+      <ion-datetime placeholder="Informe data de nascimento" displayFormat="DD/MMM/YYYY" pickerFormat="DD MMM YYYY" monthShortNames='jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez' doneText="Ok" cancelText="Cancelar" [(ngModel)]="dataNascimento"></ion-datetime>
     </ion-item>
-    <p>*Por favor digite neste formato: xx xxxxx-xxxx</p>
-
-    <ion-item > 
-      <ion-input type="email" [(ngModel)]="maile" placeholder="Digite um e-mail para cadastro">
-        <ion-label>E-mail :</ion-label>
-      </ion-input>
-    </ion-item>
-    <p>* este e-mail será usado para fazer o login</p>
-
-    <ion-item>
-      <ion-input type="password" [(ngModel)]="senh" placeholder="Digite a senha desejada">
-        <ion-label>Senha :</ion-label>
-      </ion-input>
-    </ion-item>
-    <p>* A senha deve ter se 6 a 10 dígitos</p>
-
-    <ion-item>
-      <ion-input type="password" [(ngModel)]="csenha" placeholder="Confirme a senha desejada">
-        <ion-label>Senha :</ion-label>
-      </ion-input>
-    </ion-item>
-    <p>* Digite novamente a senha anterior</p>
 
     <ion-item>
       <ion-input type="text" [(ngModel)]="cpf" placeholder="Digite seu número de CPF">
-        <ion-label>CPF :</ion-label>
+        <ion-label>*CPF :</ion-label>
       </ion-input>
+      <p>* Apenas números</p>
     </ion-item>
-    <p>* apenas números</p>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Gênero</ion-label>
+        <ion-select [(ngModel)]="sexo" value="o" placeholder="Outros">
+          <ion-select-option value="f">Mulher</ion-select-option>
+          <ion-select-option value="m">Homem</ion-select-option>
+          <ion-select-option value="o">Outros</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-title >
+      Dados de Contato
+    </ion-title>
 
     <ion-item>
+      <ion-input type="text" [(ngModel)]="fone" placeholder="Digite seu número de celular">
+        <ion-label>*Celular :</ion-label>
+      </ion-input>
+      <p>* Apenas números</p>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label>Este número é whatsapp?</ion-label>
+        <ion-select [(ngModel)]="whatsapp" value="false">
+          <ion-select-option value="true">sim</ion-select-option>
+          <ion-select-option value="false">não</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="telefone" placeholder="Digite seu número fixo">
+        <ion-label>Telefone :</ion-label>
+      </ion-input>
+      <p>* Apenas números</p>
+    </ion-item>
+
+    <ion-title >
+      Dados de Endereço
+    </ion-title>
+    <ion-item>
       <ion-input type="text" placeholder="Digite seu CEP" [(ngModel)]="cep">
-        <ion-label>CEP :</ion-label>
+        <ion-label>*CEP :</ion-label>
       </ion-input>
       <ion-button (click)="runHttp()">
         <ion-label>Pesquisar cep</ion-label>
@@ -93,13 +91,40 @@
     <ion-item *ngIf="endereco != null"><ion-label>Logradouro: {{endereco.logradouro}} </ion-label></ion-item>
     <ion-item *ngIf="endereco != null"><ion-label>Bairro: {{endereco.bairro}}</ion-label></ion-item>
     <ion-item *ngIf="endereco != null"><ion-label>Localidade: {{endereco.localidade}} </ion-label></ion-item>
-    <ion-item *ngIf="endereco != null"><ion-label>Complemento: {{endereco.complemento}} </ion-label></ion-item>
     <ion-item *ngIf="endereco != null"><ion-label>UF: {{endereco.uf}} </ion-label></ion-item>
     <ion-item *ngIf="endereco == null"><ion-label>Logradouro:  </ion-label></ion-item>
     <ion-item *ngIf="endereco == null"><ion-label>Bairro: </ion-label></ion-item>
     <ion-item *ngIf="endereco == null"><ion-label>Localidade: </ion-label></ion-item>
     <ion-item *ngIf="endereco == null"><ion-label>Complemento:  </ion-label></ion-item>
     <ion-item *ngIf="endereco == null"><ion-label>UF: </ion-label></ion-item>
+    <ion-item>
+      <ion-input *ngIf="endereco != null" type="text" [(ngModel)]="complemento_endereco" placeholder="Digite o complemento">
+        <ion-label>*Complemento :</ion-label>
+      </ion-input>
+    </ion-item>
+
+    <ion-title >
+      Dados de Login
+    </ion-title>
+    <ion-item > 
+      <ion-input type="email" [(ngModel)]="maile" placeholder="Digite um e-mail para cadastro">
+        <ion-label>*E-mail :</ion-label>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="senh" placeholder="Digite a senha desejada">
+        <ion-label>*Senha :</ion-label>
+      </ion-input>
+    </ion-item>
+    <p>* A senha deve ter se 6 a 10 dígitos</p>
+
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="csenha" placeholder="Confirme a senha desejada">
+        <ion-label>*Senha :</ion-label>
+      </ion-input>
+    </ion-item>
+    <p>* Digite novamente a senha anterior</p>
 
   </div>
   <ion-button (click)="cadastra()">confirmar</ion-button>

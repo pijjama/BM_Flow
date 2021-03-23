@@ -10,7 +10,7 @@ export class ResultadoPage implements OnInit {
   nome = "";
   sobrenome = "";
   sexo = "";
-  telefone = "";
+  celular = "";
   email = "";
   senha="";
   csenha="";
@@ -18,13 +18,17 @@ export class ResultadoPage implements OnInit {
   cep:string = "";
   headers;
   endereco = null;
+  datanascimento="";
+  telefone="";
 
   constructor(private router: Router){  
     if (this.router.getCurrentNavigation().extras.state) {
         const state = this.router.getCurrentNavigation().extras.state;
         this.nome = state.nome ? state.nome : '';
         this.sobrenome = state.sobrenome ? state.sobrenome : '';
+        this.datanascimento = state.datanascimento ? state.datanascimento : '';
         this.sexo = state.sexo ? state.sexo : '';
+        this.celular = state.celular ? state.celular : '';
         this.telefone = state.telefone ? state.telefone : '';
         this.email = state.email ? state.email : '';
         this.senha = state.senha ? state.senha : '';
